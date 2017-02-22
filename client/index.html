@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Night Chef</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- css animate -->
+    <link rel="stylesheet" href="css/animate.css" media="screen" title="animated css">
+    <!-- custome css -->
+    <link rel="stylesheet" href="css/style.css" media="screen" title="custome css">
+
+    <style media="screen">
+
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      perspective: 1px;
+      transform-style: preserve-3d;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .box{
+      position: relative;
+      min-height: 100vh;
+      width: 100vw;
+      transform-style: inherit;
+    }
+
+    .bg-red{
+      background-color: red;
+    }
+
+    .bg-yellow{
+      background-color: yellow;
+    }
+
+    .bg-black{
+      background-color: black;
+    }
+
+    /* logo */
+    #night{
+    }
+
+    #moon{
+      margin-top: -25px;
+      margin-left: 120px;
+    }
+
+    #chef{
+
+    }
+
+    #logo-desc{
+      margin-top: 3%;
+    }
+
+    #logo-group{
+      margin-top: 6vh;
+    }
+
+    /* animation duration */
+    .duration-3s{
+      -webkit-animation-duration: 3s;
+    }
+    .duration-5s{
+      -webkit-animation-duration: 5s;
+    }
+    .duration-7s{
+      -webkit-animation-duration: 7s;
+    }
+    .duration-12s{
+      -webkit-animation-duration: 12s;
+    }
+
+    /* font family */
+    p{
+      font-family: "Arial";
+    }
+
+    /* color */
+    .text-white{
+      color: white;
+    }
+
+    /* font size */
+    .font-md{
+      font-size: 128pt;
+      font-weight: 900;
+    }
+
+    .font-sm{
+      font-size: 64pt;
+      font-weight: 900;
+    }
+
+    .font-xs{
+      font-size: 32pt;
+    }
+
+    /*  */
+    #nav-text-night-chef:hover {
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 15px;
+      color: white;
+    }
+
+    .thumbnail{
+      background-color: transparent;
+      border: 2px solid white;
+    }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Just an image -->
+
+    <div class="box bg-black">
+      <!-- navbar -->
+      <div class="container">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar text-white"></span>
+                <span class="icon-bar text-white"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand text-white" href="#" id="nav-text-night-chef">Night Chef</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#">Restaurant<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="text-white">Top Restaurant</a></li>
+                    <li><a href="#" class="text-white">Restaurant Nearby You</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#">Food<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="text-white">Top Food at Night</a></li>
+                    <li><a href="#" class="text-white">You must Try</a></li>
+                  </ul>
+                </li>
+
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="text-white"><span class="glyphicon glyphicon-user text-white"></span> Sign Up</a></li>
+                <li><a href="#" class="text-white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- / navbar -->
+      <div class="container">
+        <div  id="logo-group">
+          <div class="row">
+            <!-- text night -->
+            <div class="col-md-4 col-xs-12">
+              <div class="text-white font-md" id="night">
+                <p>Night</p>
+              </div>
+            </div>
+            <!-- moon logo -->
+            <div class="col-md-4 col-xs-6">
+              <img src="Moon.png" alt="Night chef logo" id="moon"/>
+            </div>
+            <!-- text chef -->
+            <div class="col-md-4 col-xs-6">
+              <div class="text-white font-md" id="chef">
+                <p>hef</p>
+              </div>
+            </div>
+          </div> <!-- end row -->
+          <!-- quote -->
+            <p class="text-center font-xs text-white" id="logo-desc">
+              Hungry in the middle of night ? Don't worry, we connect you to the close restaurant around you
+            </p>
+        </div> <!-- end group-logo -->
+      </div>
+    </div>
+
+    <!-- <div class="box">
+      <iframe style="height: 100vh; width: 100vw" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15868.261329623274!2d106.7934312840087!3d-6.121909348961241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdacb917bfb866141!2sPluit+Village+Mall!5e0!3m2!1sid!2sid!4v1479151560495" frameborder="0"></iframe>
+    </div> -->
+
+    <!-- Restaurant section -->
+    <div class="box bg-black">
+      <div class="container">
+        <h1 class="text-center text-white">Top Restaurant</h1>
+        <hr><br>
+        <div id="restaurant"></div>
+      </div> <!-- / container -->
+    </div> <!-- / box -->
+
+    <!-- Food section -->
+    <div class="box bg-black">
+      <div class="container">
+        <h1 class="text-center text-white">Top Food</h1>
+        <hr><br>
+        <div id="food"></div>
+      </div> <!-- / container -->
+    </div> <!-- / box -->
+
+  <script type="text/javascript">
+  /* food */
+  var food = ""
+  for(var i = 0; i < 6; i++){
+    food += `
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="img/food1.jpg" alt="logo" height="180px">
+        <div class="caption">
+          <h3 class="text-center text-white">Hacktiv Resto</h3>
+          <hr>
+          <p class="text-white">Restaurant terbaik yang akan pernah and temui di malam hari ..</p>
+          <hr>
+          <p class="text-right">
+            <a href="#" class="btn btn-default text-center" role="button">view</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    `
+  }
+  $('#food').append(food)
+
+  /* Restaurant */
+  var restaurant = ""
+  for(var i = 0; i < 6; i++){
+    restaurant += `
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="img/resto1.jpg" alt="logo">
+        <div class="caption">
+          <h3 class="text-center text-white">Hacktiv Resto</h3>
+          <hr>
+          <p class="text-white">Restaurant terbaik yang akan pernah and temui di malam hari</p>
+          <hr>
+          <p class="text-right">
+            <a href="#" class="btn btn-default text-center" role="button">view</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    `
+  }
+  $('#restaurant').append(restaurant)
+
+  /* animation */
+  $.fn.extend({
+      animateCss: function (animationName, duration) {
+          var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+          this.addClass('animated ' + animationName + duration).one(animationEnd, function() {
+              $(this).removeClass('animated ' + animationName);
+          });
+      }
+  });
+
+  $('#night').animateCss('fadeInLeft ', 'duration-5s');
+  $('#moon').animateCss('slideInDown ', 'duration-5s');
+  $('#chef').animateCss('fadeInRight ', 'duration-5s');
+  $('#logo-desc').animateCss('fadeIn ', 'duration-7s');
+
+  $("#moon").click(function() {
+    $('#moon').animateCss('hinge ', 'duration-12s')
+  });
+  </script>
+  </body>
+</html>
