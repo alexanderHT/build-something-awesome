@@ -52,6 +52,16 @@ var controllerPosting = {
       if (err) throw err
       res.json(data._id)
     })
+  },
+  getAllPostingByUser: function (req, res) {
+    modelPost
+      .find({ postBy: req.params.userid })
+      .populate('postBy')
+      .exec(function (err, data) {
+        if (err) return handleError(err)
+        // else console.log({data})
+        else res.json(data)
+      })
   }
 }
 

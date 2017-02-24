@@ -136,6 +136,9 @@
           </div>
           `
           $('#post-list').prepend(temp)
+          title: $('#create-title').val('')
+          description: $('#create-description').val('')
+          img: $('#create-image').val('')
         }
       });
     }
@@ -159,7 +162,7 @@
     /* function get all data post from database */
     function getAllPosting(){
       $.ajax({
-        url: "http://localhost:3000/api/posts/",
+        url: `http://localhost:3000/api/posts/user/${localStorage.getItem('userid')}`,
         type: 'get',
         success: function( result ) {
           var temp = '';

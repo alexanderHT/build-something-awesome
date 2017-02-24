@@ -10,5 +10,7 @@ router.post('/', controllerPosting.addOnePost)
 router.get('/post/:id', controllerPosting.getOnePost)
 /* delete one posting from database */
 router.delete('/', controllerPosting.deleteOnePost)
+/* get all posting from database by userid */
+router.get('/user/:userid', controllerPosting.getAllPostingByUser)
 
 module.exports = router
