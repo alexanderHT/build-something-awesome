@@ -14,117 +14,7 @@
     <!-- css animate -->
     <link rel="stylesheet" href="css/animate.css" media="screen" title="animated css">
     <!-- custome css -->
-    <link rel="stylesheet" href="css/style.css" media="screen" title="custome css">
-
-    <style media="screen">
-
-    html {
-      height: 100%;
-      overflow: hidden;
-    }
-
-    body {
-      margin:0;
-      padding:0;
-      perspective: 1px;
-      transform-style: preserve-3d;
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
-
-    .box{
-      position: relative;
-      min-height: 100vh;
-      width: 100vw;
-      transform-style: inherit;
-    }
-
-    .bg-red{
-      background-color: red;
-    }
-
-    .bg-yellow{
-      background-color: yellow;
-    }
-
-    .bg-black{
-      background-color: black;
-    }
-
-    /* logo */
-    #night{
-    }
-
-    #moon{
-      margin-top: -25px;
-      margin-left: 120px;
-    }
-
-    #chef{
-
-    }
-
-    #logo-desc{
-      margin-top: 3%;
-    }
-
-    #logo-group{
-      margin-top: 6vh;
-    }
-
-    /* animation duration */
-    .duration-3s{
-      -webkit-animation-duration: 3s;
-    }
-    .duration-5s{
-      -webkit-animation-duration: 5s;
-    }
-    .duration-7s{
-      -webkit-animation-duration: 7s;
-    }
-    .duration-12s{
-      -webkit-animation-duration: 12s;
-    }
-
-    /* font family */
-    p{
-      font-family: "Arial";
-    }
-
-    /* color */
-    .text-white{
-      color: white;
-    }
-
-    /* font size */
-    .font-md{
-      font-size: 128pt;
-      font-weight: 900;
-    }
-
-    .font-sm{
-      font-size: 64pt;
-      font-weight: 900;
-    }
-
-    .font-xs{
-      font-size: 32pt;
-    }
-
-    /*  */
-    #nav-text-night-chef:hover {
-      border: 2px solid white;
-      border-radius: 5px;
-      padding: 15px;
-      color: white;
-    }
-
-    .thumbnail{
-      background-color: transparent;
-      border: 2px solid white;
-    }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 
   </head>
   <body>
@@ -142,10 +32,10 @@
                 <span class="icon-bar text-white"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand text-white" href="#" id="nav-text-night-chef">Night Chef</a>
+              <a class="navbar-brand text-white" href="index.html" id="nav-text-night-chef">NIGHT CHEF</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
+              <!-- <ul class="nav navbar-nav">
 
                 <li class="dropdown">
                   <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#">Restaurant<span class="caret"></span></a>
@@ -163,10 +53,10 @@
                   </ul>
                 </li>
 
-              </ul>
+              </ul> -->
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="text-white"><span class="glyphicon glyphicon-user text-white"></span> Sign Up</a></li>
-                <li><a href="#" class="text-white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a class="text-white" data-toggle="modal" data-target="#modalRegister"><span class="glyphicon glyphicon-user text-white"></span>Sign Up</a></li>
+                <li><a class="text-white" data-toggle="modal" data-target="#modalLogin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
               </ul>
             </div>
           </div>
@@ -222,6 +112,67 @@
         <div id="food"></div>
       </div> <!-- / container -->
     </div> <!-- / box -->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg">
+      Launch demo modal
+    </button>
+
+    <!-- Modal login -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Login</h4>
+          </div>
+          <div class="modal-body">
+            <!-- input username -->
+            <div class="form-group">
+              <label for="login-username">Username</label>
+              <input type="text" class="form-control" id="login-username" placeholder="username, Ex: tamatamvan" required="true">
+            </div>
+            <!-- input password -->
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" class="form-control" id="login-password" placeholder="Password" required="true">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="login()">login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal register -->
+    <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Register</h4>
+          </div>
+          <div class="modal-body">
+            <!-- input username -->
+            <div class="form-group">
+              <label for="register-username">Username</label>
+              <input type="text" class="form-control" id="register-username" placeholder="username, Ex: tamatamvan" required="true">
+            </div>
+            <!-- input password -->
+            <div class="form-group">
+              <label for="register-password">Password</label>
+              <input type="password" class="form-control" id="register-password" placeholder="Password" required="true">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script type="text/javascript">
   /* food */
@@ -286,6 +237,45 @@
   $("#moon").click(function() {
     $('#moon').animateCss('hinge ', 'duration-12s')
   });
+
+  function login(){
+    $.ajax({
+      url: "http://localhost:3000/api/users/login",
+      type: "post",
+      data: {
+        username: $('#login-username').val(),
+        password: $('#login-password').val()
+      },
+      success: function( result ) {
+        $('#modallogin').modal('hide')
+        if (result == 'your username or password wrong') {
+          alert(result)
+        }else{
+          localStorage.setItem("token", result.token);
+          localStorage.setItem("userid", result.userid);
+          localStorage.setItem("username", result.username);
+          window.location.href = "cmsUser.html"
+        }
+      }
+    });
+  }
+
+  function register(){
+    $.ajax({
+      url: "http://localhost:3000/api/users/register",
+      type: "post",
+      data: {
+        username: $('#register-username').val(),
+        password: $('#register-password').val()
+      },
+      success: function( result ) {
+        $('#modalRegister').modal('hide')
+        alert(result)
+      }
+    });
+  }
+
+
   </script>
   </body>
 </html>

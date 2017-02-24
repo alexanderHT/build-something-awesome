@@ -1,0 +1,106 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin:0;
+  padding:0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.box{
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  transform-style: inherit;
+}
+
+.bg-red{
+  background-color: red;
+}
+
+.bg-yellow{
+  background-color: yellow;
+}
+
+.bg-black{
+  background-color: black;
+}
+
+/* logo */
+#night{
+}
+
+#moon{
+  margin-top: -25px;
+  margin-left: 120px;
+}
+
+#chef{
+
+}
+
+#logo-desc{
+  margin-top: 3%;
+}
+
+#logo-group{
+  margin-top: 6vh;
+}
+
+/* animation duration */
+.duration-3s{
+  -webkit-animation-duration: 3s;
+}
+.duration-5s{
+  -webkit-animation-duration: 5s;
+}
+.duration-7s{
+  -webkit-animation-duration: 7s;
+}
+.duration-12s{
+  -webkit-animation-duration: 12s;
+}
+
+/* font family */
+p{
+  font-family: "Arial";
+}
+
+/* color */
+.text-white{
+  color: white;
+}
+
+/* font size */
+.font-md{
+  font-size: 128pt;
+  font-weight: 900;
+}
+
+.font-sm{
+  font-size: 64pt;
+  font-weight: 900;
+}
+
+.font-xs{
+  font-size: 32pt;
+}
+
+/*  */
+#nav-text-night-chef:hover {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 15px;
+  color: white;
+}
+
+.thumbnail{
+  background-color: transparent;
+  border: 2px solid white;
+}

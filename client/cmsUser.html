@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Night Chef</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- css animate -->
+    <link rel="stylesheet" href="css/animate.css" media="screen" title="animated css">
+    <!-- custome css -->
+    <link rel="stylesheet" href="css/style.css" media="screen" title="custome css">
+
+    <style media="screen">
+
+    </style>
+
+  </head>
+  <body>
+
+  <!-- nav -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Night Chef</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="cmsPost.html">Posting</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" onclick="logout()"> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- nav -->
+  <div class="container">
+    <h1 class="text-center" id="name-username"></h1>
+  </div>
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    if (!localStorage.getItem("token")) {
+      window.location.href="index.html"
+    }
+
+    $('#name-username').html(`Welcome to Night Chef, ${localStorage.getItem("username")} !`)
+
+    function logout(){
+      localStorage.removeItem("token");
+      localStorage.removeItem("userid");
+      localStorage.removeItem("username");
+      window.location.href="index.html"
+    }
+  </script>
+  </body>
+</html>
