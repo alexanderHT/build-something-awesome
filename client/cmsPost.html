@@ -247,10 +247,13 @@
         data: {
           id: postid,
           title: $('#edit-title').val(),
-          description: $
+          description: $('#edit-description').val(),
+          img: $('#edit-image').val()
         },
         success: function( result ) {
-          $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+          $(`#${result._id} .card-title`).html(` Title : ${result.title} `)
+          $(`#${result._id} .card-text`).html(` Description : ${result.description} `)
+          $('#modalEdit').modal('hide')
         }
       });
     }

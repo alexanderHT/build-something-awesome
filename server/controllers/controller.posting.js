@@ -64,7 +64,8 @@ var controllerPosting = {
       })
   },
   editOnePost: function (req, res) {
-    modelPost.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description, img: eq.body.img }, function (err, data) {
+    console.log(req.body)
+    modelPost.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description, img: req.body.img }, {new: true}, function (err, data) {
       if (err) throw err
       res.json(data)
     })
