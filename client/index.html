@@ -85,7 +85,7 @@
           </div> <!-- end row -->
           <!-- quote -->
             <p class="text-center font-xs text-white" id="logo-desc">
-              Hungry in the middle of night ? Don't worry, we connect you to the close restaurant around you
+              Night Chef give you information about restaurant that open in the night, popular food, and more ...
             </p>
         </div> <!-- end group-logo -->
       </div>
@@ -98,25 +98,11 @@
     <!-- Restaurant section -->
     <div class="box bg-black">
       <div class="container">
-        <h1 class="text-center text-white">Top Restaurant</h1>
+        <h1 class="text-center text-white">New Posting</h1>
         <hr><br>
-        <div id="restaurant"></div>
-      </div> <!-- / container -->
+        <div id="posting"></div>
+      </div> <!-- / container Restaurant -->
     </div> <!-- / box -->
-
-    <!-- Food section -->
-    <div class="box bg-black">
-      <div class="container">
-        <h1 class="text-center text-white">Top Food</h1>
-        <hr><br>
-        <div id="food"></div>
-      </div> <!-- / container -->
-    </div> <!-- / box -->
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg">
-      Launch demo modal
-    </button>
 
     <!-- Modal login -->
     <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -174,50 +160,16 @@
       </div>
     </div>
 
-  <script type="text/javascript">
-  /* food */
-  var food = ""
-  for(var i = 0; i < 6; i++){
-    food += `
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="img/food1.jpg" alt="logo" height="180px">
-        <div class="caption">
-          <h3 class="text-center text-white">Hacktiv Resto</h3>
-          <hr>
-          <p class="text-white">Restaurant terbaik yang akan pernah and temui di malam hari ..</p>
-          <hr>
-          <p class="text-right">
-            <a href="#" class="btn btn-default text-center" role="button">view</a>
-          </p>
+    <!-- modal view -->
+    <div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modalViewContent">
+          <!-- view will be here -->
         </div>
       </div>
     </div>
-    `
-  }
-  $('#food').append(food)
 
-  /* Restaurant */
-  var restaurant = ""
-  for(var i = 0; i < 6; i++){
-    restaurant += `
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="img/resto1.jpg" alt="logo">
-        <div class="caption">
-          <h3 class="text-center text-white">Hacktiv Resto</h3>
-          <hr>
-          <p class="text-white">Restaurant terbaik yang akan pernah and temui di malam hari</p>
-          <hr>
-          <p class="text-right">
-            <a href="#" class="btn btn-default text-center" role="button">view</a>
-          </p>
-        </div>
-      </div>
-    </div>
-    `
-  }
-  $('#restaurant').append(restaurant)
+  <script type="text/javascript">
 
   /* animation */
   $.fn.extend({
@@ -275,6 +227,67 @@
     });
   }
 
+  /* function get all data post from database */
+  function getAllPosting(){
+    $.ajax({
+      url: "http://localhost:3000/api/posts",
+      type: 'get',
+      success: function( result ) {
+        var temp = '';
+        for (var i = 0; i < result.length; i++) {
+          temp +=
+          `
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="${result[i].img}" alt="logo">
+              <div class="caption">
+                <h3 class="text-center text-white">${result[i].title.substring(0, 25)}</h3>
+                <hr>
+                <p class="text-white">${result[i].description.substring(0, 35)} ...</p>
+                <hr>
+                <p class="text-right">
+                  <a href="#" class="btn btn-default text-center" role="button" onclick="view('${result[i]._id}')">view</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          `
+        }
+        $('#posting').prepend(temp)
+      }
+    });
+  }
+  /* use the function get all posting */
+  getAllPosting()
+
+  /* function view one post */
+  function view(input){
+    $('#modalView').modal('show')
+    $.ajax({
+      url: `http://localhost:3000/api/posts/post/${input}`,
+      success: function( result ) {
+        $('#removeView').remove()
+        let temp =
+        `
+        <div id="removeView">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Posting</h4>
+          </div>
+          <div class="modal-body">
+          <img style="width:100%;" src="${result.img}">
+          <h3>${result.title}</h3>
+          <h5>${result.description}</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        `
+        $('#modalViewContent').prepend(temp)
+      }
+    });
+  }
 
   </script>
   </body>

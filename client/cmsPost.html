@@ -13,7 +13,15 @@
     <link rel="stylesheet" href="css/style.css" media="screen" title="custome css">
 
     <style media="screen">
+      .card{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 20px;
+        margin-top: 10px;
+      }
 
+      .text-right{
+        text-align: right;
+      }
     </style>
 
   </head>
@@ -42,6 +50,10 @@
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCreate">CREATE POST <span class="glyphicon glyphicon-plus"></span></button>
     </div>
 
+    <!-- list -->
+    <div class="row" id="post-list">
+    </div>
+    <!-- list -->
   </div>
   <!-- content -->
 
@@ -52,23 +64,28 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Register</h4>
+          <h4 class="modal-title" id="myModalLabel">Create Post</h4>
         </div>
         <div class="modal-body">
           <!-- input username -->
           <div class="form-group">
-            <label for="register-username">Title</label>
-            <input type="text" class="form-control" id="create-title" placeholder="username, Ex: tamatamvan" required="true">
+            <label for="create-title">Title</label>
+            <input type="text" class="form-control" id="create-title" placeholder="" required="true">
           </div>
           <!-- input password -->
           <div class="form-group">
-            <label for="register-password">Description</label>
-            <input type="password" class="form-control" id="register-password" placeholder="Password" required="true">
+            <label for="create-description">Description</label>
+            <textarea class="form-control" rows="5" id="create-description" required="true"></textarea>
+          </div>
+          <!-- input image -->
+          <div class="form-group">
+            <label for="create-image">Image Url</label>
+            <input type="text" class="form-control" id="create-image" placeholder="https://media.fromthegrapevine.com/assets/images/2015/8/good.jpg" required="true">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="register()">Post</button>
+          <button type="button" class="btn btn-primary" onclick="post()">Post</button>
         </div>
       </div>
     </div>
@@ -84,14 +101,89 @@
       window.location.href="index.html"
     }
 
-    $('#name-username').html(`Welcome to Night Chef, ${localStorage.getItem("username")} !`)
-
+    /* function logout */
     function logout(){
       localStorage.removeItem("token");
       localStorage.removeItem("userid");
       localStorage.removeItem("username");
       window.location.href="index.html"
     }
+
+    /* function create post */
+    function post(){
+      $.ajax({
+        url: "http://localhost:3000/api/posts",
+        type: 'post',
+        data: {
+          title: $('#create-title').val(),
+          description: $('#create-description').val(),
+          img: $('#create-image').val(),
+          userid: localStorage.getItem("userid")
+        },
+        success: function( result ) {
+          $('#modalCreate').modal('hide')
+          console.log(result);
+          let temp =
+          `
+          <div class="card" id="${result._id}">
+            <div class="card-block">
+              <h4 class="card-title">Title : ${result.title}</h4>
+              <p class="card-text">Description : ${result.description}</p>
+              <p class="text-right">Post By : ${result.postBy.username}</p>
+              <a href="#" class="card-link" onclick="preedit('${result._id}')">EDIT</a>
+              <a href="#" class="card-link" onclick="deletePost('${result._id}')">DELETE</a>
+            </div>
+          </div>
+          `
+          $('#post-list').prepend(temp)
+        }
+      });
+    }
+
+    /* function delete post */
+    function deletePost(inputid){
+      alert('are you sure want to delete')
+      $.ajax({
+        url: "http://localhost:3000/api/posts",
+        type: 'delete',
+        data: {
+          id: inputid
+        },
+        success: function( result ) {
+          console.log(result);
+          $(`#${result}`).remove();
+        }
+      });
+    }
+
+    /* function get all data post from database */
+    function getAllPosting(){
+      $.ajax({
+        url: "http://localhost:3000/api/posts/",
+        type: 'get',
+        success: function( result ) {
+          var temp = '';
+          for (var i = 0; i < result.length; i++) {
+            temp +=
+            `
+            <div class="card" id="${result[i]._id}">
+              <div class="card-block">
+                <h4 class="card-title">Title : ${result[i].title}</h4>
+                <p class="card-text">Description : ${result[i].description}</p>
+                <p class="text-right">Post By : ${result[i].postBy.username}</p>
+                <a href="#" class="card-link" onclick="preedit('${result[i]._id}')">EDIT</a>
+                <a href="#" class="card-link" onclick="deletePost('${result[i]._id}')">DELETE</a>
+              </div>
+            </div>
+            `
+          }
+          $('#post-list').prepend(temp)
+        }
+      });
+    }
+    /* use the function get all posting */
+    getAllPosting()
+
   </script>
   </body>
 </html>
