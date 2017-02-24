@@ -58,7 +58,7 @@
   <!-- content -->
 
   <!-- modal -->
-  <!-- Modal register -->
+  <!-- Modal create -->
   <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -87,6 +87,19 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="post()">Post</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal edit -->
+  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit Post</h4>
+        </div>
+        <div id="modal-form-edit"></div>
       </div>
     </div>
   </div>
@@ -186,6 +199,61 @@
     }
     /* use the function get all posting */
     getAllPosting()
+
+    /* function preedit */
+    function preedit(postid){
+      $.ajax({
+        url: `http://localhost:3000/api/posts/post/${postid}`,
+        type: 'get',
+        success: function( result ) {
+          $('#delete-modal-edit').remove()
+          $('#modalEdit').modal('show')
+          let temp =
+          `
+          <div id="delete-modal-edit">
+            <div class="modal-body">
+              <!-- input username -->
+              <div class="form-group">
+                <label for="create-title">Title</label>
+                <input type="text" class="form-control" id="edit-title" placeholder="" required="true" value="${result.title}">
+              </div>
+              <!-- input password -->
+              <div class="form-group">
+                <label for="create-description">Description</label>
+                <textarea class="form-control" rows="5" id="edit-description" required="true">${result.description}</textarea>
+              </div>
+              <!-- input image -->
+              <div class="form-group">
+                <label for="create-image">Image Url</label>
+                <input type="text" class="form-control" id="edit-image" placeholder="https://media.fromthegrapevine.com/assets/images/2015/8/good.jpg" value="${result.img}" required="true">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="edit('${result._id}')">Edit</button>
+            </div>
+          </div>
+          `
+          $('#modal-form-edit').prepend(temp)
+        }
+      })
+    }
+
+    /* function edit */
+    function edit(postid){
+      $.ajax({
+        url: "http://localhost:3000/api/posts",
+        type: 'put',
+        data: {
+          id: postid,
+          title: $('#edit-title').val(),
+          description: $
+        },
+        success: function( result ) {
+          $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+        }
+      });
+    }
 
   </script>
   </body>
